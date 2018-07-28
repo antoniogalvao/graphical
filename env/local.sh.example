@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+export MIX_ENV=local
+export DATABASE_URL=postgres://graphical_user:graphical_pass@postgres_graphical/graphical_db
+export PORT=4000
