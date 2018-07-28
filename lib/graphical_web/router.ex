@@ -7,7 +7,13 @@ defmodule GraphicalWeb.Router do
 
   scope "/api", GraphicalWeb do
     pipe_through :api
-    resources "/users", UserController, expect: [:new, :edit]
-    resources "/posts", PostController, except: [:new, :edit]
+      resources "/users", UserController, expect: [:new, :edit]
+      resources "/posts", PostController, except: [:new, :edit]
   end
+
+  forward "/api", Absinthe.Plug,
+    schema: GraphicalWeb.Schema
+
+  forward "/graphiql", Absinthe.Plug.GraphiQL,
+    schema: GraphicalWeb.Schema
 end
